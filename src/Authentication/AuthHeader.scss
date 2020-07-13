@@ -1,0 +1,29 @@
+.auth-header{
+    position: sticky;
+    top: 0;
+    height: auto;
+    background: #5a87e4;
+    // border-bottom: 1px solid #a0a6ab;
+    color: #ffffff ;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    .title{
+        margin-left: 20px;
+    }
+    .links{
+        width: calc(100vw - 143px);
+        display: flex;
+        justify-content: flex-end;
+        
+        span{
+            cursor: pointer;
+            padding: 14px 0px;
+            margin: 0px 10px;
+            a{
+                text-decoration: none;
+                color: #ffffff ;
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+.page-name{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 6rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #696c70;
+}
+.signup-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 0px 60px  0px;
+    margin: 0 66px;
+    // height: calc(100vh - 69px);
+    form{
+        width: 510px;
+        border: 1px solid #ced4da;
+        padding: 20px;
+        border-radius: 6px;
+        background: aliceblue;
+    }
+}
