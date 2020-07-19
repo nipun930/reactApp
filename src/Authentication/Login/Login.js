@@ -1,10 +1,8 @@
-import React from 'react';
-import { Form, Button } from 'react-bootstrap';
-
+import React from 'react'; //react-navigation by jibreel
 import './Login.scss'
-import { environment } from '../../environment';
 
-
+import { Form, Button } from 'react-bootstrap';
+import { Redirect, withRouter } from "react-router-dom";
 
 
 export default class Login extends React.Component {
@@ -12,28 +10,22 @@ export default class Login extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            // responsefromServer: 'waiting',
-            userName: '',
-            password: '',
+            redirect: null,
+            email: '',
+            password: ''
         }
     }
 
-    componentDidMount() {
-        fetch(`${environment.baseUrl}/test`)
-            .then(res => res.json())
-            .then(response => {
-                console.log('response from get api is =>', response);
-                this.setState({
-                    responsefromServer: response.message
-                });
-                console.log('response from get api is =>', this.state.responsefromServer);
-            },
-                (error) => {
-                    console.log('error => ', error);
-                });
+    login() {
+        sessionStorage.setItem('auth', true);
+        this.setState({ redirect: "/admin" });
+        // this.props.history.push('/admin')
     }
 
     render() {
+        if (this.state.redirect) {
+            return <Redirect to={this.state.redirect} />
+        }
         return (
             <div>
                 <div className="page-name">Login</div>
@@ -41,7 +33,7 @@ export default class Login extends React.Component {
                     <Form autoComplete="off">
                         <Form.Group>
                             <Form.Label> Email Id  </Form.Label>
-                            <Form.Control type="text" value={this.state.userName} autoComplete="false" placeholder="Enter Email Id"
+                            <Form.Control type="text" value={this.state.email} autoComplete="false" placeholder="Enter Email Id"
                                 onChange={(e) => { this.setState({ email: e.target.value }) }} />
                         </Form.Group>
                         <Form.Group>
@@ -49,13 +41,14 @@ export default class Login extends React.Component {
                             <Form.Control type="password" value={this.state.password} autoComplete="false" placeholder="Enter Password"
                                 onChange={(e) => { this.setState({ password: e.target.value }) }} />
                         </Form.Group>
-                        <Button variant="primary" disabled={!(this.state.userName !== '' && this.state.password !== '')}
-                            onClick={() => { console.log(this.state) }}>
+                        <Button variant="primary" disabled={!(this.state.email !== '' && this.state.password !== '')}
+                            onClick={() => { this.login(); }}>
                             Login
-                    </Button>
+                        </Button>
                     </Form>
                 </div>
             </div>
         )
     }
 }
+// export default withRouter(Login)

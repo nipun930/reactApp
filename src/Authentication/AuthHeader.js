@@ -1,40 +1,36 @@
-import React, { Suspense } from 'react';
+import React, { Suspense } from 'react'; //{ Suspense } 
 import './AuthHeader.scss'
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link } from "react-router-dom";
 
-import Signup from "./Signup/Signup";
-import Login from "./Login/Login";
+const Signup = React.lazy(() => import('./Signup/Signup'));
+const Login = React.lazy(() => import('./Login/Login'));
+// import Signup from ;
+// import Login from "";
 
 
 export default class AuthHeder extends React.Component {
-    componentDidMount() {
-        this.toAdmin();
-    }
+    componentDidMount() { }
 
-    toAdmin() {
-        console.log(this.context);
-
-    }
     render() {
         return (
             <div>
 
-                <Router>
-                    <div className="auth-header">
-                        <span className="title">Admin</span>
-                        <div className="links">
-                            <span>
-                                <Link to="/login">
-                                    Login
+                <div className="auth-header">
+                    <span className="title">Admin</span>
+                    <div className="links">
+                        <span>
+                            <Link to="/login">
+                                Login
                                 </Link>
-                            </span>
-                            <span>
-                                <Link to="/signup">
-                                    Signup
+                        </span>
+                        <span>
+                            <Link to="/signup">
+                                Signup
                                 </Link>
-                            </span>
-                        </div>
+                        </span>
                     </div>
+                </div>
+                <Suspense fallback={<div className="container-below-header">Loading...</div>}>
                     <div>
                         <Switch>
                             <Route path="/signup">
@@ -48,7 +44,7 @@ export default class AuthHeder extends React.Component {
                             </Route>
                         </Switch>
                     </div>
-                </Router>
+                </Suspense>
             </div>
         )
     }

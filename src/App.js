@@ -15,10 +15,10 @@ export default class App extends React.Component {
           <Router>
             <div>
               <Switch>
-                <Route exact path="/admin">
+                <Route path="/admin">
                   <AdminPages />
                 </Route>
-                <Route exact path="/auth">
+                <Route path="/auth">
                   <AuthHeder />
                 </Route>
                 <Route path="/">
