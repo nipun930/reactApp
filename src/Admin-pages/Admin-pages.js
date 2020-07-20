@@ -2,6 +2,8 @@ import React, { Suspense } from 'react';
 import './Admin-pages.scss'
 import { Switch, Route, Link } from "react-router-dom";
 
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+
 const Dashboard = React.lazy(() => import('./Dashboard/Dashboard'));
 const ViewMagazine = React.lazy(() => import('./View-magazines/View-magazines'));
 const AddMagazines = React.lazy(() => import('./Add-magazines/Add-magazines'));
@@ -11,7 +13,6 @@ export default class AdminPages extends React.Component {
         return (
             <div>
 
-                {/* <Router> */}
                 <div className="admin-pages">
                     <span className="title"><span className="logo">G</span>eo Child</span>
                     <div className="links">
@@ -36,20 +37,23 @@ export default class AdminPages extends React.Component {
                     <div>
                         <Switch>
                             <Route exact path="/admin/dashboard">
-                                <Dashboard />
+                                <ProtectedRoute path={`/admin/dashboard`} component={Dashboard}>
+                                </ProtectedRoute >
                             </Route>
                             <Route exact path="/admin/view">
-                                <ViewMagazine />
+                                <ProtectedRoute path={`/admin/view`} component={ViewMagazine}>
+                                </ProtectedRoute >
                             </Route>
                             <Route exact path="/admin/add">
-                                <AddMagazines />
+                                <ProtectedRoute path={`/admin/view`} component={AddMagazines}>
+                                </ProtectedRoute >
                             </Route>
                             <Route path="/">
-                                <Dashboard />
+                                <ProtectedRoute path={`/admin/view`} component={Dashboard}>
+                                </ProtectedRoute >
                             </Route>
                         </Switch>
                     </div>
-                    {/* </Router> */}
                 </Suspense>
             </div>
         )

@@ -2,7 +2,7 @@ import React from 'react'; //react-navigation by jibreel
 import './Login.scss'
 
 import { Form, Button } from 'react-bootstrap';
-import { Redirect, withRouter } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 
 export default class Login extends React.Component {
