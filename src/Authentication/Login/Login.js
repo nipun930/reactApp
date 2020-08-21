@@ -23,6 +23,13 @@ export default class Login extends React.Component {
     }
 
     render() {
+
+
+        let invalidField = {
+            // border: '1px solid #ff51515c',
+            // boxShadow: '0 0 0 2px #f48484'
+        }
+        
         if (this.state.redirect) {
             return <Redirect to={this.state.redirect} />
         }
@@ -34,7 +41,7 @@ export default class Login extends React.Component {
                         <Form.Group>
                             <Form.Label> Email Id  </Form.Label>
                             <Form.Control type="text" value={this.state.email} autoComplete="false" placeholder="Enter Email Id"
-                                onChange={(e) => { this.setState({ email: e.target.value }) }} />
+                                onChange={(e) => { this.setState({ email: e.target.value }) }} style={invalidField}/>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label> Password </Form.Label>

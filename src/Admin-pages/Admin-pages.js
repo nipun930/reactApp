@@ -9,32 +9,54 @@ const ViewMagazine = React.lazy(() => import('./View-magazines/View-magazines'))
 const AddMagazines = React.lazy(() => import('./Add-magazines/Add-magazines'));
 
 export default class AdminPages extends React.Component {
+
+    logOut = () => {
+        sessionStorage.clear();
+    }
+
     render() {
         return (
             <div>
-
-                <div className="admin-pages">
-                    <span className="title"><span className="logo">G</span>eo Child</span>
-                    <div className="links">
-                        <span>
+                <input type="checkbox" id="sidemenu" />
+                <label htmlFor="sidemenu">
+                    <span id="showbtn">S</span>
+                    <span id="hidebtn">H</span>
+                </label>
+                <div className="sidebar">
+                    <header>ADMIN</header>
+                    <ul>
+                        <li>
                             <Link to="/admin/dashboard">
                                 Home
-                                </Link>
-                        </span>
-                        <span>
+                            </Link>
+                        </li>
+                        <li>
                             <Link to="/admin/view">
                                 View Magazines
-                                </Link>
-                        </span>
-                        <span>
+                            </Link>
+                        </li>
+                        <li>
                             <Link to="/admin/add">
                                 Add Magazines
-                                </Link>
-                        </span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="" onClick={this.logOut}>
+                                Logout
+                            </Link>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div className="header">
+                    <div className="profile-pic">
+                        {/* <img /> */}
                     </div>
                 </div>
+
                 <Suspense fallback={<div>Loading...</div>}>
-                    <div>
+                    <div className="body-content">
                         <Switch>
                             <Route exact path="/admin/dashboard">
                                 <ProtectedRoute path={`/admin/dashboard`} component={Dashboard}>
