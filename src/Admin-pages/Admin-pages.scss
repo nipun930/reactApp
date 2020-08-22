@@ -1,35 +1,3 @@
-// .admin-pages{
-//     position: sticky;
-//     top: 0;
-//     height: 66px;
-//     background: #5a87e4;
-//     // border-bottom: 1px solid #a0a6ab;
-//     color: #ffffff ;
-//     font-size: 1.3rem;
-//     display: flex;
-//     align-items: center;
-//     .title{
-//         margin-left: 20px;
-//     }
-//     .links{
-//         width: calc(100vw - 143px);
-//         display: flex;
-//         justify-content: flex-end;
-        
-//         span{
-//             cursor: pointer;
-//             padding: 0px 8px;
-//             a{
-//                 text-decoration: none;
-//                 color: #ffffff ;
-//             }
-//         }
-//     }
-// }
-// .logo{
-//     color: yellow;
-// }
-
 .sidebar{
     position: fixed;
     left: 0;
@@ -37,9 +5,11 @@
     height: 100vh;
     width: 250px;
     background: #4d4d4d;
+    z-index: 10;
     transition: all .5s ease;
     header{
-        font-size: 22px;
+        font-size: 2rem;
+        font-weight: 500;
         text-align: center;
         line-height: 77px;
         background: rgb(155, 219, 219);
@@ -48,6 +18,9 @@
     ul{
         list-style: none;
         padding-left: 0%;
+        height: calc(100vh - 77px);
+        overflow-y: auto;
+        padding-bottom: 40px;
         li{
             a{
                 height: 100%;
@@ -61,6 +34,7 @@
             a:hover{
                 text-decoration: none;
                 color: #ffff00;
+                background: #707070;
                 padding-left: 16px;
             }
         }
@@ -69,7 +43,7 @@
 #sidemenu{
     display: none;
 }
-label #showbtn, label #hidebtn{
+label #showbtn{
     position: absolute;
     cursor: pointer;
 }
@@ -77,13 +51,11 @@ label #showbtn{
     top: 26px;
     left: 195px;
     transition: all .5s;
-}
-
-label #hidebtn{
-    top: 26px;
-    left: 195px;
-    z-index: 1111;
-    transition: all .5s;
+    z-index: 11;
+    svg{
+        height: 30px;
+        width: 30px;
+    }
 }
 
 .header{
@@ -101,13 +73,21 @@ label #hidebtn{
         height: 60px;
         width: 60px;
         border-radius: 50%;
-        background: #a8e1af;
+        background: #a8e1af33;
+    }
+    .user-status{
+        position: relative;
+        height: 16px;
+        width: 16px;
+        background: #1cd91c;
+        top: 18px;
+        left: -14px;
+        border-radius: 50%;
+        border: 3px solid white;
     }
 }
 
 .body-content{
-    height: calc(100vh - 77px);
-    background: #fdff5f73;
     width: calc(100vw - 250px);
     position: absolute;
     top: 77px;
@@ -126,6 +106,26 @@ label #hidebtn{
 #sidemenu:checked~ label #showbtn{
     left: 26px;
 }
-#sidemenu:checked~ label #hidebtn{
-    left: -195px;
+
+@media screen and (max-width: 890px){
+    .sidebar{
+        left: -250px;
+    }
+    .body-content{
+        width: 100vw;
+        left: 0;
+    }
+
+    label #showbtn{
+        left: 26px;
+    }
+
+    #sidemenu:checked~ .sidebar{
+        left: 0px;
+    }
+
+    #sidemenu:checked~ label #showbtn{
+        left: 195px;
+        // opacity: ;
+    }
 }

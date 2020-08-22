@@ -24,9 +24,17 @@ export default class ViewMagazine extends React.Component {
 
     render(){
         return(
-            <div className="admin-container">
-                this is View Component
+            <div>
+            <div className="box">
+                <div className="box-head">
+                    <div className="title">TITLE</div>
+                    <div className="tools">tools</div>
+                </div>
+                <div className="box-body">
+                    View Magazine Goes Here
+                </div>
             </div>
+        </div>
         )
     }
 }

@@ -4,6 +4,11 @@ import { Switch, Route, Link } from "react-router-dom";
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAlignJustify } from '@fortawesome/free-solid-svg-icons'
+
+import { demoProfile } from '../assets/avatar/staff-4.jpg'
+
 const Dashboard = React.lazy(() => import('./Dashboard/Dashboard'));
 const ViewMagazine = React.lazy(() => import('./View-magazines/View-magazines'));
 const AddMagazines = React.lazy(() => import('./Add-magazines/Add-magazines'));
@@ -19,8 +24,8 @@ export default class AdminPages extends React.Component {
             <div>
                 <input type="checkbox" id="sidemenu" />
                 <label htmlFor="sidemenu">
-                    <span id="showbtn">S</span>
-                    <span id="hidebtn">H</span>
+                    <span id="showbtn"><FontAwesomeIcon icon={faAlignJustify}/></span>
+                    {/* <span id="hidebtn"><FontAwesomeIcon icon={faAlignJustify}/></span> */}
                 </label>
                 <div className="sidebar">
                     <header>ADMIN</header>
@@ -51,8 +56,10 @@ export default class AdminPages extends React.Component {
 
                 <div className="header">
                     <div className="profile-pic">
-                        {/* <img /> */}
+                        {/* <img alt=""/> */}
+                        <img src={window.location.origin+'/../assets/avatar/staff-4.jpg'} alt="" />
                     </div>
+                    <span className="user-status"></span>
                 </div>
 
                 <Suspense fallback={<div>Loading...</div>}>

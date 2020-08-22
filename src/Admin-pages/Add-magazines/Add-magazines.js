@@ -4,8 +4,16 @@ import './Add-magazines.scss'
 export default class AddMagazine extends React.Component {
     render(){
         return(
-            <div className="admin-container">
-                this is Add Component
+            <div>
+                <div className="box">
+                    <div className="box-head">
+                        <div className="title">TITLE</div>
+                        <div className="tools">tools</div>
+                    </div>
+                    <div className="box-body">
+                        Add Magazine Goes Here
+                    </div>
+                </div>
             </div>
         )
     }
